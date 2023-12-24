@@ -1,29 +1,29 @@
 "use client";
 
 import { Song } from "@/types";
-// import useOnPlay from "@/hooks/useOnPlay";
 import SongItem from "@/components/SongItem";
+import useOnPlay from "@/hooks/useOnPlay";
 
 interface PageContentProps {
-  songs: Song[];
+    songs: Song[];
 }
 
 const PageContent: React.FC<PageContentProps> = ({
-  songs
+    songs
 }) => {
-//   const onPlay = useOnPlay(songs);
+    const onPlay = useOnPlay(songs);
 
-  if (songs.length === 0) {
+    if (songs.length === 0) {
+        return (
+            <div className="mt-4 text-neutral-400">
+                No songs available.
+            </div>
+        )
+    }
+
     return (
-      <div className="mt-4 text-neutral-400">
-        No songs available.
-      </div>
-    )
-  }
-
-  return ( 
-    <div 
-      className="
+        <div
+            className="
         grid 
         grid-cols-2 
         sm:grid-cols-3 
@@ -34,16 +34,16 @@ const PageContent: React.FC<PageContentProps> = ({
         gap-4 
         mt-4
       "
-    >
-      {songs.map((item) => (
-        <SongItem 
-        //   onClick={(id: string) => onPlay(id)} 
-          key={item.id} 
-          data={item}
-        />
-      ))}
-    </div>
-  );
+        >
+            {songs.map((item) => (
+                <SongItem
+                    onClick={(id: string) => onPlay(id)}
+                    key={item.id}
+                    data={item}
+                />
+            ))}
+        </div>
+    );
 }
- 
+
 export default PageContent;
