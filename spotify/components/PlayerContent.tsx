@@ -30,6 +30,8 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     const Icon = isPlaying ? BsPauseFill : BsPlayFill;
     const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
 
+    const [playingTrack, setPlayingTrack] =useState();
+
     const onPlayNext = () => {
         if (player.ids.length === 0) {
             return;
@@ -97,6 +99,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             setVolume(0);
         }
     }
+
 
     return (
         <div className="grid grid-cols-2 md:grid-cols-3 h-full">
