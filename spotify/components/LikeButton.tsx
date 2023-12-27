@@ -29,7 +29,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
     if (!user?.id) {
       return;
     }
-  
+
     const fetchData = async () => {
       const { data, error } = await supabaseClient
         .from('liked_songs')
@@ -85,7 +85,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
   }
 
   return (
-    <button 
+    <button
       className="
         cursor-pointer 
         hover:opacity-75 

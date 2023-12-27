@@ -1,6 +1,6 @@
 "use client";
 
-import useSound from 'use-sound';
+import useSound from "use-sound";
 import { useEffect, useState } from "react";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
@@ -35,7 +35,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             return;
         }
 
-        const currentIndex = player.ids.findIndex((id) => id === player.activeId);//find the current of thhe song that is playing, so we can play the next song align to it 
+        const currentIndex = player.ids.findIndex((id) => id === player.activeId);
         const nextSong = player.ids[currentIndex + 1];
 
         if (!nextSong) {
