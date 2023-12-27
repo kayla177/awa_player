@@ -10,7 +10,7 @@ const Liked = async () => {
     const songs = await getLikedSongs();
     return (
         <div className="
-    bg-neutral-900 
+    bg-yellow-950 
     rounded-lg 
     h-full 
     w-full 
