@@ -5,6 +5,8 @@ import { NextResponse } from 'next/server';
 import { stripe } from '@/libs/stripe';
 import { getURL } from '@/libs/helpers';
 import { createOrRetrieveCustomer } from '@/libs/supabaseAdmin';
+import { loadStripe } from '@stripe/stripe-js';
+
 
 export async function POST(
     request: Request
@@ -14,15 +16,18 @@ export async function POST(
     try {
         const supabase = createRouteHandlerClient({
             cookies
-        }); const {
+        });
+
+        const {
             data: { user }
         } = await supabase.auth.getUser();
 
         const customer = await createOrRetrieveCustomer({
             uuid: user?.id || '',
-            email: user?.email || ''
+            email: user?.email || '',
         });
 
+        const stripePromise = loadStripe('your-publishable-key');
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             billing_address_collection: 'required',
@@ -30,17 +35,17 @@ export async function POST(
             line_items: [
                 {
                     price: price.id,
-                    quantity
+                    quantity,
                 }
             ],
             mode: 'subscription',
             allow_promotion_codes: true,
             subscription_data: {
-                trial_from_plan: true,
-                metadata
+                trial_period_days: 7,
+                metadata,
             },
             success_url: `${getURL()}/account`,
-            cancel_url: `${getURL()}/`
+            cancel_url: `${getURL()}/`,
         });
 
         return NextResponse.json({ sessionId: session.id });
