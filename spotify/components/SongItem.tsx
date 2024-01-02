@@ -18,9 +18,9 @@ const SongItem: React.FC<SongItemProps> = ({
 }) => {
   const imagePath = useLoadImage(data);
 
-  return ( 
+  return (
     <div
-      onClick={() => onClick(data.id)} 
+      onClick={() => onClick(String(data.id))}
       className="
         relative 
         group 
@@ -38,7 +38,7 @@ const SongItem: React.FC<SongItemProps> = ({
         p-3
       "
     >
-      <div 
+      <div
         className="
           relative 
           aspect-square 
@@ -59,7 +59,7 @@ const SongItem: React.FC<SongItemProps> = ({
         <p className="font-semibold truncate w-full">
           {data.title}
         </p>
-        <p 
+        <p
           className="
             text-neutral-400 
             text-sm 
@@ -71,7 +71,7 @@ const SongItem: React.FC<SongItemProps> = ({
           By {data.author}
         </p>
       </div>
-      <div 
+      <div
         className="
           absolute 
           bottom-24 
@@ -81,7 +81,7 @@ const SongItem: React.FC<SongItemProps> = ({
         <PlayButton />
       </div>
     </div>
-   );
+  );
 }
- 
+
 export default SongItem;

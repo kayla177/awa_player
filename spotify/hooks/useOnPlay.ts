@@ -14,8 +14,10 @@ const useOnPlay = (songs: Song[]) => {
             return authModal.onOpen();
         }
 
+        const ids: string[] = songs.map((song) => String(song.id));
+
         player.setId(id);
-        player.setIds(songs.map((song) => song.id));//create playlist of the current song, e.g., if 2 songs in search, create a list for those two
+        player.setIds(ids);//create playlist of the current song, e.g., if 2 songs in search, create a list for those two
     }
 
     return onPlay;

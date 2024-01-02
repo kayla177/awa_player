@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbe5029d-9fb9-47c7-93d1-f838f9ad338d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/awa_player.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/musicplayer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/app/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/app/globals.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/app/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/next.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/public/next.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/public/vercel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/tailwind.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify/tsconfig.json" afterDir="false" />
-    </list>
+    <list default="true" id="dbe5029d-9fb9-47c7-93d1-f838f9ad338d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,9 +16,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2ZrsolawBecXYPsV2zjDmwg74Q3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -55,6 +34,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -90,6 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1703191713931</updated>
       <workItem from="1703191715442" duration="1573000" />
+      <workItem from="1703983450369" duration="21000" />
     </task>
     <servers />
   </component>
