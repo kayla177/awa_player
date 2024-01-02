@@ -1,7 +1,7 @@
 import { Song } from "@/types";
 import MediaItem2 from "@/components/MediaItem2";
 import LikeButton from "@/components/LikeButton";
-import useOnPlay from "@/hooks/useOnPlay";
+import useOnPlay2 from "@/hooks/useOnPlay2";
 
 
 import Image from 'next/image';
@@ -13,7 +13,7 @@ interface SearchContentProps {
 }
 
 const SearchContent: React.FC<SearchContentProps> = ({ songs }) => {
-  const onPlay = useOnPlay(songs);
+  const onPlay = useOnPlay2(songs);
 
   if (songs.length === 0) {
     return (

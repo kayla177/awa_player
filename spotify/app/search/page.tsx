@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import SearchInput from "@/components/SearchInput";
 import SearchContent from "@/components/SearchContent";
 import { Button, InputGroup, FormControl, Container, Row, Card } from "react-bootstrap";
-import useOnPlay from "@/hooks/useOnPlay";
+import useOnPlay2 from "@/hooks/useOnPlay2";
 
 import { corsHeaders } from '@/cors';
 
@@ -22,7 +22,7 @@ function App(): JSX.Element {
   const [searchInput, setSearchInput] = useState<string>("");
   const [accessToken, setAccessToken] = useState<string>("");
   const [songs, setSongs] = useState<Song[]>([]);
-  const onPlay = useOnPlay(songs);
+  const onPlay = useOnPlay2(songs);
 
   useEffect(() => {
     // API accessToken
