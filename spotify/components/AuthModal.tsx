@@ -20,6 +20,7 @@ const AuthModal = () => {
   
   const supabaseClient = useSupabaseClient();
 
+  // close model after you signed in
   useEffect(() => {
     if (session) {
       router.refresh();
