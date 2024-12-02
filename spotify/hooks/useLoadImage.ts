@@ -2,6 +2,7 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 import { Song } from "@/types";
 
+// Hook to load an image URL for a song
 const useLoadImage = (song: Song) => {
   const supabaseClient = useSupabaseClient();
   

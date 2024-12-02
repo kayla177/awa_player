@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 interface SearchContentProps {
   songs: Song[];
-  onPlay: (id: string) => void;
+  onPlay: (id: string) => void; // Callback function to handle song play
 }
 
 const SearchContent: React.FC<SearchContentProps> = ({ songs }) => {

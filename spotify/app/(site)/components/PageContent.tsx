@@ -4,15 +4,19 @@ import { Song } from "@/types";
 import SongItem from "@/components/SongItem";
 import useOnPlay from "@/hooks/useOnPlay";
 
+// Props definition for PageContent
 interface PageContentProps {
     songs: Song[];
 }
 
+// Component to display list of songs
 const PageContent: React.FC<PageContentProps> = ({
     songs
 }) => {
+    // Hook to handle play action
     const onPlay = useOnPlay(songs);
 
+    // Check if no songs are available
     if (songs.length === 0) {
         return (
             <div className="mt-4 text-neutral-400">

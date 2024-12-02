@@ -25,16 +25,17 @@ const Header: React.FC<HeaderProps> = ({
   className,
 }) => {
   const player = usePlayer();
-  const router = useRouter();
-  const authModal = useAuthModal();
+  const router = useRouter(); // Router instance for navigation
+  const authModal = useAuthModal(); // Hook for managing the authentication modal
 
   const supabaseClient = useSupabaseClient();
   const { user } = useUser();
 
   const handleLogout = async () => {
+    // Sign out the user
     const { error } = await supabaseClient.auth.signOut();
-    player.reset();
-    router.refresh();
+    player.reset(); // Reset the player state
+    router.refresh(); // Refresh the page
 
     if (error) {
       toast.error(error.message);
@@ -52,9 +53,10 @@ const Header: React.FC<HeaderProps> = ({
         className
       )}>
       <div className="w-full mb-4 flex items-center justify-between">
+        {/* Back/Forward navigation for desktop */}
         <div className="hidden md:flex gap-x-2 items-center">
           <button 
-            onClick={() => router.back()} 
+            onClick={() => router.back()}  // Go to the previous page
             className="
               rounded-full 
               bg-black 
@@ -69,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({
             <RxCaretLeft className="text-white" size={35} />
           </button>
           <button 
-            onClick={() => router.forward()} 
+            onClick={() => router.forward()}  // Go to the next page
             className="
               rounded-full 
               bg-black 
@@ -84,9 +86,10 @@ const Header: React.FC<HeaderProps> = ({
             <RxCaretRight className="text-white" size={35} />
           </button>
         </div>
+        {/* Mobile view buttons for Home/Search */}
         <div className="flex md:hidden gap-x-2 items-center">
           <button 
-            onClick={() => router.push('/')} 
+            onClick={() => router.push('/')}  // Navigate to the home page
             className="
               rounded-full 
               p-2 
@@ -102,7 +105,7 @@ const Header: React.FC<HeaderProps> = ({
             <HiHome className="text-black" size={20} />
           </button>
           <button 
-            onClick={() => router.push('/search')} 
+            onClick={() => router.push('/search')} // Navigate to the search page
             className="
               rounded-full 
               p-2 
@@ -127,6 +130,8 @@ const Header: React.FC<HeaderProps> = ({
               >
                 Logout
               </Button>
+
+              {/* Navigate to account */}
               <Button 
                 onClick={() => router.push('/account')} 
                 className="bg-white"
@@ -136,6 +141,7 @@ const Header: React.FC<HeaderProps> = ({
             </div>
           ) : (
             <>
+            {/* Show authentication options */}
               <div>
                 <Button 
                   onClick={authModal.onOpen} 

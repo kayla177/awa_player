@@ -23,6 +23,7 @@ const useOnPlay2 = (songs: Song[]) => {
 
         const ids: string[] = songs.map((song) => String(song.id));
 
+        // Set the current active song ID
         player.setId(id);
         player.setIds(ids);//create playlist of the current song, e.g., if 2 songs in search, create a list for those two
     }

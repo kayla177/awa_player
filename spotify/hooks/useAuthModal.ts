@@ -6,6 +6,7 @@ interface AuthModalStore {
     onClose: () => void;
 }
 
+// Create a Zustand store to manage the modal's state
 const useAuthModal = create<AuthModalStore>((set) => ({
     isOpen: false,
     onOpen: () => set({ isOpen: true }),

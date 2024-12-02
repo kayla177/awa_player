@@ -11,10 +11,12 @@ const Slider: React.FC<SlideProps> = ({
     value = 1,
     onChange
 }) => {
+    // Handle the slider value change
     const handleChange = (newValue: number[]) => { //number array of numbers
         onChange?.(newValue[0]);
     };
 
+    // Render the slider
     return (
         <RadixSlider.Root
             className="

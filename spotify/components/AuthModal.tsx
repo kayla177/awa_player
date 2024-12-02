@@ -43,6 +43,7 @@ const AuthModal = () => {
     >
       <Auth
         supabaseClient={supabaseClient}
+        // TODO: add google & linkedin
         providers={['github']}
         magicLink={true}
         appearance={{

@@ -4,13 +4,14 @@ import { useUser as useSupaUser, useSessionContext, User } from '@supabase/auth-
 import { UserDetails, Subscription } from '@/types';
 
 type UserContextType = {
-    accessToken: string | null;
-    user: User | null;
+    accessToken: string | null;// User's access token
+    user: User | null;// User data
     userDetails: UserDetails | null;
-    isLoading: boolean;
+    isLoading: boolean;// Loading state
     subscription: Subscription | null;
 };
 
+// Create a context for the user state
 export const UserContext = createContext<UserContextType | undefined>(
     undefined
 );
@@ -31,7 +32,9 @@ export const MyUserContextProvider = (props: Props) => {
     const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
     const [subscription, setSubscription] = useState<Subscription | null>(null);
 
+    // Fetch user details from Supabase
     const getUserDetails = () => supabase.from('users').select('*').single();
+    // Fetch subscription details from Supabase
     const getSubscription = () =>
         supabase
             .from('subscriptions')
@@ -42,6 +45,7 @@ export const MyUserContextProvider = (props: Props) => {
     useEffect(() => {
         if (user && !isLoadingData && !userDetails && !subscription) {
             setIsloadingData(true);
+            // Fetch user details and subscription concurrently
             Promise.allSettled([getUserDetails(), getSubscription()]).then(
                 (results) => {
                     const userDetailsPromise = results[0];

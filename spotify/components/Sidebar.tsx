@@ -22,9 +22,11 @@ const Sidebar: React.FC<SidebarProps> = ({
     children,
     songs
 }) => {
+    // Get the current route
     const pathname = usePathname();
     const player = usePlayer();
 
+    // use useMemo so make sure routes array is only recalculated when the pathname changes.
     const routes = useMemo(
         () => [
             {

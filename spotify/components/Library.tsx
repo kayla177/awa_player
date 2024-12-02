@@ -19,6 +19,7 @@ interface LibraryProps {
 const Library: React.FC<LibraryProps> = ({
     songs
 }) => {
+    // Get user and subscription states
     const { user, subscription } = useUser();
     const uploadModal = useUploadModal();
     const authModal = useAuthModal();
@@ -28,14 +29,14 @@ const Library: React.FC<LibraryProps> = ({
 
     const onClick = () => {
         if (!user) {
-            return authModal.onOpen();
+            return authModal.onOpen(); // Open the auth modal if the user is not logged in
         }
 
         // if (!subscription) {
-        //     return subscribeModal.onOpen();
+        //     return subscribeModal.onOpen(); // Open the subscription modal if the user is not subscribed
         // }
 
-        return uploadModal.onOpen();
+        return uploadModal.onOpen(); // Open the upload modal for authenticated users
     }
 
     return (

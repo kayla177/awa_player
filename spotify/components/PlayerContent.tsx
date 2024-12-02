@@ -13,24 +13,28 @@ import LikeButton from "./LikeButton";
 import MediaItem from "./MediaItem";
 import Slider from "./Slider";
 
-
+// Define props for the PlayerContent component
 interface PlayerContentProps {
   song: Song;
   songUrl: string;
 }
 
-const PlayerContent: React.FC<PlayerContentProps> = ({ 
-  song, 
+const PlayerContent: React.FC<PlayerContentProps> = ({
+  song,
   songUrl
 }) => {
   const player = usePlayer();
+  // State for volume control (default 1)
   const [volume, setVolume] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Determine which icon to display for play/pause and volume
   const Icon = isPlaying ? BsPauseFill : BsPlayFill;
   const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
 
+  // Function to play the next song
   const onPlayNext = () => {
+    // if no songs in the playlist
     if (player.ids.length === 0) {
       return;
     }
@@ -42,6 +46,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
       return player.setId(player.ids[0]);
     }
 
+    // Set the next song as active
     player.setId(nextSong);
   }
 
@@ -53,35 +58,38 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     const currentIndex = player.ids.findIndex((id) => id === player.activeId);
     const previousSong = player.ids[currentIndex - 1];
 
+    // Loop back to the last song if at the start
     if (!previousSong) {
       return player.setId(player.ids[player.ids.length - 1]);
     }
 
+    // Set the previous song as active
     player.setId(previousSong);
   }
 
   const [play, { pause, sound }] = useSound(
     songUrl,
-    { 
+    {
       volume: volume,
       onplay: () => setIsPlaying(true),
       onend: () => {
         setIsPlaying(false);
-        onPlayNext();
+        onPlayNext(); // Automatically play the next song
       },
       onpause: () => setIsPlaying(false),
       format: ['mp3']
     }
-  )as any;
+  ) as any;
 
   useEffect(() => {
-    sound?.play();
-    
+    sound?.play(); // Start playback
+
     return () => {
       sound?.unload();
     }
   }, [sound]);
 
+  // Toggle playback
   const handlePlay = () => {
     if (!isPlaying) {
       play();
@@ -98,17 +106,17 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     }
   }
 
-  return ( 
+  return (
     <div className="grid grid-cols-2 md:grid-cols-3 h-full">
-        <div className="flex w-full justify-start">
-          <div className="flex items-center gap-x-4">
-            <MediaItem data={song} />
-            <LikeButton songId={String(song.id)} />
-          </div>
+      <div className="flex w-full justify-start">
+        <div className="flex items-center gap-x-4">
+          <MediaItem data={song} />
+          <LikeButton songId={String(song.id)} />
         </div>
+      </div>
 
-        <div 
-          className="
+      <div
+        className="
             flex 
             md:hidden 
             col-auto 
@@ -116,10 +124,10 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             justify-end 
             items-center
           "
-        >
-          <div 
-            onClick={handlePlay} 
-            className="
+      >
+        <div
+          onClick={handlePlay}
+          className="
               h-10
               w-10
               flex 
@@ -130,13 +138,13 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
               p-1 
               cursor-pointer
             "
-          >
-            <Icon size={30} className="text-black" />
-          </div>
+        >
+          <Icon size={30} className="text-black" />
         </div>
+      </div>
 
-        <div 
-          className="
+      <div
+        className="
             hidden
             h-full
             md:flex 
@@ -146,20 +154,20 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             max-w-[722px] 
             gap-x-6
           "
-        >
-          <AiFillStepBackward
-            onClick={onPlayPrevious}
-            size={30} 
-            className="
+      >
+        <AiFillStepBackward
+          onClick={onPlayPrevious}
+          size={30}
+          className="
               text-neutral-400 
               cursor-pointer 
               hover:text-white 
               transition
             "
-          />
-          <div 
-            onClick={handlePlay} 
-            className="
+        />
+        <div
+          onClick={handlePlay}
+          className="
               flex 
               items-center 
               justify-center
@@ -170,37 +178,37 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
               p-1 
               cursor-pointer
             "
-          >
-            <Icon size={30} className="text-black" />
-          </div>
-          <AiFillStepForward
-            onClick={onPlayNext}
-            size={30} 
-            className="
+        >
+          <Icon size={30} className="text-black" />
+        </div>
+        <AiFillStepForward
+          onClick={onPlayNext}
+          size={30}
+          className="
               text-neutral-400 
               cursor-pointer 
               hover:text-white 
               transition
-            " 
+            "
+        />
+      </div>
+
+      <div className="hidden md:flex w-full justify-end pr-2">
+        <div className="flex items-center gap-x-2 w-[120px]">
+          <VolumeIcon
+            onClick={toggleMute}
+            className="cursor-pointer"
+            size={34}
+          />
+          <Slider
+            value={volume}
+            onChange={(value) => setVolume(value)}
           />
         </div>
-
-        <div className="hidden md:flex w-full justify-end pr-2">
-          <div className="flex items-center gap-x-2 w-[120px]">
-            <VolumeIcon 
-              onClick={toggleMute} 
-              className="cursor-pointer" 
-              size={34} 
-            />
-            <Slider 
-              value={volume} 
-              onChange={(value) => setVolume(value)}
-            />
-          </div>
-        </div>
-
       </div>
-   );
+
+    </div>
+  );
 }
- 
+
 export default PlayerContent;

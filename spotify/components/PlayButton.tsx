@@ -2,6 +2,7 @@ import { FaPlay } from "react-icons/fa";
 
 const PlayButton = () => {
     return (
+        // Define the PlayButton component
         <button
             className="
         transition 

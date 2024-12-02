@@ -7,11 +7,14 @@ import useGetSongById from "@/hooks/useGetSongById"
 import PlayerContent from "./PlayerContent";
 
 const Player = () => {
+    // Access player state
     const player = usePlayer();
+    // Fetch song details using active song ID
     const { song } = useGetSongById(player.activeId);
 
-    const songUrl = useLoadSongUrl(song!);//chance os song to be undefined so !
+    const songUrl = useLoadSongUrl(song!);//chance of song to be undefined so !
 
+    // Return nothing if there's no active song, song details, or song URL
     if (!song || !songUrl || !player.activeId) {
         return null;
     }
@@ -28,11 +31,11 @@ const Player = () => {
         px-4
       "
         >
-            <PlayerContent 
-            song={song} 
-            songUrl={songUrl}
-            key={songUrl} //when every it changes, it completely destroyed..
-            //reset the entire hook, //the songs may be overlap
+            {/* Render the player content with the current song and URL */}
+            <PlayerContent
+                song={song}
+                songUrl={songUrl}
+                key={songUrl} // Reset the player when the song changes
             />
         </div>
     );

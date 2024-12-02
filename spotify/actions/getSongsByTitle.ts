@@ -5,6 +5,7 @@ import { Song } from "@/types";
 
 import getSongs from "./getSongs";
 
+// Function to search songs by their title
 const getSongsByTitle = async (title: string): Promise<Song[]> => {
     const supabase = createServerComponentClient({
         cookies: cookies
@@ -15,6 +16,7 @@ const getSongsByTitle = async (title: string): Promise<Song[]> => {
         return allSongs;
     }
 
+    // Query songs from the 'songs' table filtered by title (case-insensitive search)
     const { data, error } = await supabase
         .from('songs')
         .select('*')

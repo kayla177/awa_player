@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 
+// Define the structure of the player's state
 interface PlayerStore {
     ids: string[];
     activeId?: string;
@@ -8,6 +9,7 @@ interface PlayerStore {
     reset: () => void;
 }
 
+// Create a Zustand store to manage the player's state
 const usePlayer = create<PlayerStore>((set) => ({
     ids: [],
     activeId: undefined,

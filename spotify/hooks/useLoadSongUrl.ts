@@ -7,9 +7,10 @@ const useLoadSongUrl = (song: Song) => {
     //if only authenticated user can see, use useSessionClient
 
     if (!song) {
-        return '';
+        return '';// Return an empty string if no song is provided
     }
 
+    // Fetch and return the song's audio URL from Supabase
     const { data: songData } = supabaseClient
         .storage
         .from('songs')

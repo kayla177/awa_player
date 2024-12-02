@@ -23,10 +23,12 @@ const LikedContent: React.FC<LikedContentProps> = ({
 
     useEffect(() => {
         if (!isLoading && !user) {
+            // Redirect if no user
             router.replace('/');
         }
     }, [isLoading, user, router]);
 
+    // Check if no liked songs
     if (songs.length === 0) {
         return (
             <div
